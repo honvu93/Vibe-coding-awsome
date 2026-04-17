@@ -1,0 +1,99 @@
+# Story: [Title]
+
+<!-- A story captures WHAT to build and WHY, from a product perspective.
+     Acceptance Criteria must be specific enough to generate automated tests.
+     If an AC cannot be tested, rewrite it until it can. -->
+
+**Status:** <!-- Draft / Ready / In Progress / Done -->
+**Type:** <!-- Feature / Bug / Refactor / Chore -->
+**Priority:** <!-- High / Medium / Low -->
+**Estimate:** <!-- e.g. 2 tasks, ~3h -->
+
+---
+
+## Description
+
+<!-- 2-4 sentences:
+     - What needs to be built
+     - Who benefits and how
+     - Why this is being done now (context / driver)
+
+     e.g. "Users currently have no way to export their account data.
+     This story adds a CSV export endpoint and a download button in the settings page.
+     Required for GDPR compliance." -->
+
+---
+
+## Acceptance Criteria
+
+<!-- Each AC must be:
+     - Specific and testable (can write an automated test for it)
+     - Worded as a user-observable outcome
+     - Independent of implementation details
+
+     Format: "Given [context], when [action], then [outcome]"
+     OR simply: "[System/User] can [verb] [noun] [with qualifier]" -->
+
+- [ ] **AC1:** <!-- Given an authenticated user, when they request a data export, then a CSV file is returned with all their data. -->
+- [ ] **AC2:** <!-- Given the export endpoint, when called with an invalid user ID, then a 404 error with code USER_NOT_FOUND is returned. -->
+- [ ] **AC3:** <!-- Given no authentication, when the export endpoint is called, then a 401 error is returned. -->
+- [ ] **AC4:** <!-- (add more as needed) -->
+
+---
+
+## Tasks
+
+<!-- Break the story into small, atomic tasks.
+     Each task = one commit. Order by dependency. -->
+
+- [ ] Task 1: <!-- Write service method + tests -->
+- [ ] Task 2: <!-- Write API route + tests -->
+- [ ] Task 3: <!-- Write frontend component + tests -->
+- [ ] Task 4: <!-- Integration check and CHANGELOG update -->
+
+---
+
+## Technical Notes
+
+<!-- Architecture decisions, patterns to follow, gotchas.
+     This section is for the implementer, not the product stakeholder.
+     e.g.:
+     - Use the contract.js error builder for domain errors
+     - This endpoint must use the existing auth middleware
+     - The CSV library to use is fast-csv (already in package.json)
+     - Avoid hitting the DB directly — go through the domain service -->
+
+---
+
+## Testing Strategy
+
+<!-- Which scenarios must have automated test coverage:
+     - Happy path: ...
+     - Auth failure: ...
+     - Not found: ...
+     - Malformed input: ...
+     - Edge case: ... (e.g. empty dataset, large dataset)
+
+     Which scenarios are out of scope for automated tests (and why): -->
+
+---
+
+## Out of Scope
+
+<!-- Explicitly list what this story does NOT include.
+     This prevents scope creep and sets clear boundaries.
+     e.g.:
+     - Bulk export for admin users (separate story)
+     - Email delivery of the export file (future enhancement)
+     - Non-CSV formats (JSON, XML) — deferred -->
+
+---
+
+## Dependencies
+
+<!-- Other stories or external changes that must land before this one:
+     - Story #XX must be merged first
+     - ENV VAR SOME_KEY must be provisioned in production
+     - Third-party API access must be confirmed -->
+
+<!-- None — this story is self-contained. -->

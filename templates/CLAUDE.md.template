@@ -1,0 +1,158 @@
+# CLAUDE.md
+
+<!-- This file tells the AI assistant everything it needs to know about YOUR project.
+     Fill in every section. Vague instructions produce vague code. -->
+
+## Language
+
+<!-- Specify the human language for AI responses, e.g.:
+     Reply to the user in English. -->
+
+## Execution Mode
+
+<!-- Describe how autonomous the AI should be, e.g.:
+     Operate fully autonomously. Do not ask for confirmation before taking actions.
+     Only stop to ask when genuinely blocked (missing credentials, ambiguous requirements
+     with no safe default). -->
+
+## Commands
+
+<!-- List EVERY command a developer needs. Include the exact string to run.
+     Group by category. Leave nothing out — the AI will use these verbatim. -->
+
+```bash
+# Setup
+# npm install && ...
+
+# Development server
+# npm run dev
+
+# Backend tests (IMPORTANT: state the runner, e.g. Node built-in, Jest, Vitest)
+# npm test                          # all tests
+# node --test tests/foo.test.js     # single test
+
+# Frontend tests
+# npm run web:test
+# pnpm --dir web vitest run tests/foo.test.ts   # single test
+
+# Lint & build
+# npm run lint
+# npm run build
+
+# Deploy
+# npm run deploy
+```
+
+## Architecture
+
+<!-- Describe the directory layout precisely. The AI uses this to know WHERE to put files. -->
+
+### Backend (`src/`)
+
+<!-- e.g. Domain-driven: src/domain/{name}/{service,repository,access,contract}.js
+     Describe each layer's responsibility in one sentence. -->
+
+### Frontend (`web/` or `app/`)
+
+<!-- e.g. Next.js App Router: web/src/app/(protected)/ for auth-gated routes
+     List path aliases: @/* → web/src/* -->
+
+### Database
+
+<!-- e.g. PostgreSQL via Prisma. Schema at prisma/schema.prisma.
+     Singleton client at src/infrastructure/db/prisma-client.js -->
+
+### Key Data Flows
+
+<!-- Describe 1-3 critical request flows end-to-end, e.g.:
+     1. User submits form → API route → domain service → Prisma → DB
+     2. Worker picks up job → processes → updates DB → frontend polls -->
+
+## Key Patterns
+
+<!-- Specific patterns the AI MUST follow. Be prescriptive. -->
+
+### Error Handling
+
+<!-- e.g. Plain Error objects with a .code property — NOT custom error classes.
+     Use contract.js builders: { code: 'DOMAIN_ERROR_NAME', message: '...' } -->
+
+### Naming Conventions
+
+<!-- e.g. Files: kebab-case. Functions: camelCase. Constants: UPPER_SNAKE_CASE. -->
+
+### File Organization Rules
+
+<!-- e.g. Each domain module owns: service.js / repository.js / access.js / contract.js
+     No cross-domain direct imports — go through the service layer. -->
+
+### Anti-Patterns
+
+<!-- Explicit list of what NOT to do, e.g.:
+     - Never import PrismaClient directly outside of prisma-client.js
+     - Never use default exports in domain modules
+     - Never catch errors silently — always re-throw or log -->
+
+## Auth & Environment
+
+<!-- Dev-only credentials (never commit real secrets). -->
+
+### Default Local Credentials
+
+<!-- e.g. admin@example.local / dev-password-only -->
+
+### Environment Variables
+
+<!-- Document EVERY env var the application reads.
+     Format: VAR_NAME — description (required / optional, fallback) -->
+
+```
+# AUTH
+# BETTER_AUTH_SECRET     — session encryption key (required)
+
+# DATABASE
+# DATABASE_URL           — PostgreSQL connection string (required)
+
+# EXTERNAL APIS
+# SOME_API_KEY           — third-party service key (optional, disables feature if absent)
+```
+
+## Testing
+
+<!-- Be explicit about the test runner. "Tests" is ambiguous. -->
+
+### Backend Tests
+
+<!-- Runner: Node.js built-in `node:test` / Jest / Vitest — PICK ONE and state it.
+     Location: tests/**/*.test.js
+     Convention: describe/it blocks, mock via runner's built-in mock() -->
+
+### Frontend Tests
+
+<!-- Runner: Vitest + JSDOM / Jest + JSDOM / Playwright — PICK ONE and state it.
+     Location: web/tests/**/*.test.{ts,tsx}
+     Convention: @testing-library/react for component tests -->
+
+### Running a Single Test
+
+<!-- Exact command, e.g.:
+     node --test tests/my-service.test.js
+     pnpm --dir web vitest run tests/my-component.test.tsx -->
+
+## Commit Discipline
+
+<!-- Rules the AI must follow when committing. -->
+
+<!-- e.g.
+     - Commit immediately after completing each task. Never batch.
+     - Update CHANGELOG.md before every commit.
+     - Commit message format: type(scope): description
+       Types: feat / fix / refactor / test / chore / docs -->
+
+## Documentation
+
+<!-- Where different kinds of docs live:
+     - Feature docs → docs/
+     - Planning artifacts → _planning/
+     - API reference → docs/api/
+     Do NOT create .md files unless explicitly requested. -->

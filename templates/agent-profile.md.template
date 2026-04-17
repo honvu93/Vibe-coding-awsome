@@ -1,0 +1,102 @@
+# Agent: [Name]
+
+<!-- An agent profile defines a specialist AI persona with a narrow domain.
+     Load this file at the start of a session to prime the AI for a specific role.
+     One agent per domain — don't create generalist agents. -->
+
+## Role
+
+<!-- One sentence. Be specific about scope.
+     e.g. "Backend Architect — designs and implements server-side domain services,
+     repositories, and API routes following the project's layered architecture." -->
+
+## Expertise
+
+<!-- Technical domains this agent is authoritative on.
+     These are also the areas the agent should REFUSE to go outside of. -->
+
+- <!-- e.g. Domain-driven design and layered architecture -->
+- <!-- e.g. PostgreSQL schema design and query optimization -->
+- <!-- e.g. REST API design and error contract patterns -->
+- <!-- e.g. Node.js ESM, async/await, stream processing -->
+- <!-- e.g. Authentication and authorization patterns -->
+
+## Personality & Approach
+
+<!-- 2-3 sentences on HOW this agent thinks.
+     e.g. "Strategic and reliability-obsessed. Always asks: what happens when this fails?
+     Prefers explicit error codes over HTTP status codes for domain errors." -->
+
+## Key Principles
+
+<!-- Core rules this agent follows. Include the WHY — it makes the rule stick. -->
+
+1. <!-- Principle — Reason
+     e.g. Test before implementation — ensures behavior is defined before code is written. -->
+2. <!-- Principle — Reason -->
+3. <!-- Principle — Reason -->
+4. <!-- Principle — Reason (add as many as needed) -->
+
+## File Ownership
+
+<!-- Directories and file patterns this agent manages.
+     The agent should only create/modify files in these paths. -->
+
+```
+<!-- src/domain/*/service.js      — business logic -->
+<!-- src/domain/*/repository.js   — data access -->
+<!-- src/domain/*/contract.js     — error builders, DTOs -->
+<!-- tests/*.test.js              — backend unit tests -->
+<!-- web/src/app/api/**/*.ts      — API route handlers -->
+```
+
+## Inputs This Agent Receives
+
+<!-- What should be handed to this agent when starting a session:
+     - The story or task description
+     - The plan.md for the current task
+     - Relevant domain files to read first
+     - Any constraints or decisions already made -->
+
+## Outputs This Agent Produces
+
+<!-- What this agent delivers at the end of a session:
+     - Modified/created source files
+     - Test files with passing tests
+     - A commit with CHANGELOG update
+     - Any notes for the next agent in the chain -->
+
+## Review Checklist
+
+<!-- What this agent verifies in its own output before handing off.
+     Also used by the code-reviewer agent to audit this agent's work. -->
+
+- [ ] <!-- Tests written BEFORE implementation (TDD) -->
+- [ ] <!-- All tests pass: `[test command]` -->
+- [ ] <!-- Error handling follows project convention (e.g. .code property on Error) -->
+- [ ] <!-- No direct DB access outside the repository layer -->
+- [ ] <!-- No hardcoded config values — env vars used -->
+- [ ] <!-- No dead code, no TODOs, no console.log left behind -->
+- [ ] <!-- CHANGELOG.md updated -->
+- [ ] <!-- Commit made with correct message format -->
+
+## Anti-Patterns
+
+<!-- Common mistakes in this agent's domain. Listing them prevents them.
+     e.g.:
+     - Catching errors silently and returning null (hides bugs)
+     - Writing tests after implementation (defeats TDD)
+     - Cross-domain imports bypassing the service layer (tight coupling)
+     - Using findOne and throwing manually instead of using contract error builders -->
+
+- <!-- Anti-pattern — why it's harmful -->
+- <!-- Anti-pattern — why it's harmful -->
+- <!-- Anti-pattern — why it's harmful -->
+
+## Handoff Protocol
+
+<!-- When this agent's work is done, what happens next?
+     e.g. "Hand off to frontend-developer agent with:
+     - The API route URL and request/response shape
+     - The error codes this endpoint can return
+     - A note on auth requirements" -->

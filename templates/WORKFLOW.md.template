@@ -1,0 +1,138 @@
+# Development Workflow
+
+<!-- This document defines HOW work gets done in this project.
+     Share it with your AI assistant at the start of every session.
+     Fill in every section with project-specific conventions. -->
+
+## Before Starting Any Task
+
+<!-- List what the AI (or developer) must read/check before writing a single line of code.
+     e.g.:
+     1. Read CLAUDE.md — commands, architecture, patterns
+     2. Read the story/ticket for this task
+     3. Run `git status` — verify clean working tree
+     4. Run `npm test` — verify tests pass before touching anything -->
+
+1. <!-- Read: [file or document] -->
+2. <!-- Verify: [state or condition] -->
+3. <!-- Confirm: [requirement or acceptance criteria] -->
+
+## Implementation Flow
+
+<!-- Ordered steps from "start" to "commit". No steps may be skipped.
+     Each step should produce a concrete, verifiable artifact. -->
+
+### Step 1: Plan
+
+<!-- Before writing code, write a plan.
+     Output: a plan.md file (or inline task breakdown) listing:
+     - Every file to create or modify
+     - The test to write first (exact code, no pseudocode)
+     - The implementation
+     - The verification command
+     - The commit message -->
+
+### Step 2: Branch
+
+<!-- Create a dedicated branch for the work.
+     Convention: type/short-description, e.g. feat/add-user-export
+     Command: git checkout -b feat/your-feature -->
+
+### Step 3: Write the Test First (TDD — Non-Negotiable)
+
+<!-- Write a FAILING test before any production code.
+     The test must:
+     - Test behavior, not implementation details
+     - Be runnable immediately (no stubs needed)
+     - Fail for the right reason (not a compile error)
+
+     Run: [your test command] and confirm it FAILS. -->
+
+### Step 4: Write Minimum Implementation
+
+<!-- Write only enough code to make the test pass.
+     No extra features. No "I'll need this later." -->
+
+### Step 5: Refactor
+
+<!-- Clean up duplication, naming, structure.
+     Tests must still pass after every refactor. -->
+
+### Step 6: Verify
+
+<!-- Run the full verification suite before committing:
+     - Unit tests: [command]
+     - Lint: [command]
+     - Build: [command]
+     - Any integration checks: [command] -->
+
+### Step 7: Commit
+
+<!-- One task = one commit. Never batch.
+     1. Update CHANGELOG.md
+     2. Stage specific files (not git add -A)
+     3. Commit with message: type(scope): description -->
+
+## Debugging Protocol
+
+<!-- When something breaks, follow this order. Do not skip steps. -->
+
+### 1. Investigate
+
+<!-- Before changing anything, understand the problem.
+     - Read the error message fully
+     - Find the exact line that throws
+     - Identify the call chain -->
+
+### 2. Analyze
+
+<!-- Form a clear problem statement.
+     "The error is X, occurring at Y, when Z happens."
+     If you cannot state this, keep investigating. -->
+
+### 3. Hypothesize
+
+<!-- List 2-3 possible root causes ranked by likelihood.
+     Pick the most likely one. -->
+
+### 4. Implement Fix
+
+<!-- Change the minimum code needed to address the root cause.
+     Do NOT refactor unrelated code during a bug fix. -->
+
+### 5. Verify
+
+<!-- Confirm the original error is gone.
+     Confirm no regression: run the full test suite. -->
+
+## Review Process
+
+<!-- Two-stage review gates before merging. -->
+
+### Stage 1: Spec Compliance
+
+<!-- Does the implementation satisfy the acceptance criteria?
+     Check each AC item. Mark pass/fail explicitly. -->
+
+### Stage 2: Code Quality
+
+<!-- Does the code follow project patterns?
+     Checklist:
+     - [ ] Error handling follows the project convention
+     - [ ] No hardcoded values that should be config
+     - [ ] No dead code, no TODOs left behind
+     - [ ] Tests cover the happy path and at least one failure path
+     - [ ] CHANGELOG.md updated -->
+
+## Completion Checklist
+
+<!-- The definition of "done." All items must be true before closing a task. -->
+
+- [ ] All acceptance criteria pass
+- [ ] All existing tests still pass
+- [ ] New tests were written (TDD — test written BEFORE implementation)
+- [ ] Lint passes with zero errors
+- [ ] Build succeeds
+- [ ] CHANGELOG.md updated
+- [ ] Commit made with clear message
+- [ ] No debug code, console.log, or temporary hacks left in

@@ -1,0 +1,136 @@
+# Plan: [Feature Name]
+
+<!-- A plan is a CONTRACT between you and the AI.
+     It must be specific enough that the AI can execute each task
+     without asking a single clarifying question.
+     NO pseudocode. NO vague instructions. Only exact code and exact commands. -->
+
+## Goal
+
+<!-- One sentence: what does "done" look like from a user or system perspective?
+     e.g. "A user can export their data as a CSV file from the settings page." -->
+
+## Scope
+
+<!-- What this plan DOES cover: -->
+<!-- - ... -->
+
+<!-- What this plan does NOT cover (out of scope): -->
+<!-- - ... -->
+
+## File Map
+
+<!-- List EVERY file this plan touches. This is the plan's contract.
+     If a file isn't listed here, the AI must not create or modify it.
+     Action: CREATE | MODIFY | DELETE -->
+
+| File | Action | Responsibility |
+|------|--------|----------------|
+| <!-- `src/domain/foo/service.js` --> | <!-- MODIFY --> | <!-- Add export method --> |
+| <!-- `src/domain/foo/contract.js` --> | <!-- MODIFY --> | <!-- Add export error codes --> |
+| <!-- `tests/foo-service.test.js` --> | <!-- MODIFY --> | <!-- Add export test cases --> |
+| <!-- `web/src/app/api/foo/export/route.ts` --> | <!-- CREATE --> | <!-- API route handler --> |
+
+---
+
+## Tasks
+
+<!-- Each task is one atomic unit of work = one commit.
+     Tasks are ordered by dependency. Never work out of order. -->
+
+### Task 1: [Name]
+
+**Files:** `path/to/file.js`
+
+**Test first (write this BEFORE any implementation):**
+
+```javascript
+// Exact test code — no pseudocode, no "add test for X"
+// This test must FAIL before implementation and PASS after.
+
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
+describe('FeatureName', () => {
+  it('should [expected behavior]', async () => {
+    // arrange
+    // const input = ...;
+
+    // act
+    // const result = await featureFunction(input);
+
+    // assert
+    // assert.equal(result.status, 'expected');
+  });
+});
+```
+
+**Implementation:**
+
+```javascript
+// Exact implementation code — no "add appropriate error handling"
+// Write the minimum code that makes the test pass.
+```
+
+**Verify:** `node --test tests/foo.test.js`
+
+**Commit:** `feat(foo): add [specific behavior]`
+
+---
+
+### Task 2: [Name]
+
+**Files:** `path/to/other/file.ts`
+
+**Test first:**
+
+```typescript
+// Exact test code
+```
+
+**Implementation:**
+
+```typescript
+// Exact implementation code
+```
+
+**Verify:** `npm run web:test`
+
+**Commit:** `feat(foo): add [specific behavior]`
+
+---
+
+### Task 3: [Name] (if needed)
+
+<!-- Same structure. Keep tasks small — a task should take < 30 minutes. -->
+
+---
+
+## Final Verification
+
+<!-- Commands to prove the ENTIRE plan worked end-to-end.
+     Run these after ALL tasks are complete. -->
+
+```bash
+# 1. All tests pass
+npm test
+
+# 2. Frontend tests pass
+npm run web:test
+
+# 3. Lint clean
+npm run web:lint
+
+# 4. Build succeeds
+npm run web:build
+
+# 5. Manual smoke test (if applicable)
+# curl http://localhost:6200/api/foo -H "..." | jq .
+```
+
+## Rollback
+
+<!-- If something goes wrong, how to undo this plan safely:
+     git revert [commit hashes]
+     OR
+     Steps to manually restore previous state -->

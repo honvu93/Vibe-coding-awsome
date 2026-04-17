@@ -1,0 +1,120 @@
+# Skill: [Name]
+
+<!-- A skill is a process enforcement rule — a mandatory workflow
+     the AI must follow when a specific situation is detected.
+     Skills override ad-hoc behavior. They are non-negotiable.
+
+     Keep skills focused on ONE process. If a skill covers two things, split it. -->
+
+## When to Activate
+
+<!-- Describe the trigger conditions precisely.
+     "When the developer is about to..." forces you to name the exact moment.
+     e.g.:
+     - When the developer is about to write production code for a new feature
+     - When a test is failing and the developer doesn't yet know why
+     - When a branch is ready to be merged
+     Avoid vague triggers like "when working on code." -->
+
+- <!-- Trigger condition 1 -->
+- <!-- Trigger condition 2 -->
+
+---
+
+## The Rule
+
+<!-- **Core principle in one bold sentence.**
+     This is the law. Everything else in this skill exists to enforce it.
+     e.g. **Never write production code without a failing test that defines the expected behavior.** -->
+
+**<!-- State the non-negotiable rule here. -->**
+
+---
+
+## Process Steps
+
+<!-- Ordered steps. Each step must produce a concrete, verifiable artifact.
+     "Think about it" is not a step. "Write X and verify with command Y" is a step. -->
+
+1. **[Step Name]** — <!-- What to do. Expected output: [artifact/state].
+                        e.g. Write a failing test. Expected output: test file exists, `npm test` exits non-zero. -->
+
+2. **[Step Name]** — <!-- What to do. Expected output: [artifact/state]. -->
+
+3. **[Step Name]** — <!-- What to do. Expected output: [artifact/state]. -->
+
+4. **[Step Name]** — <!-- What to do. Expected output: [artifact/state]. -->
+
+<!-- Add more steps as needed. Keep each step to one action. -->
+
+---
+
+## Red Flags (Stop If You See These)
+
+<!-- Behaviors that signal the process is being violated.
+     When a red flag appears, STOP and return to the correct step.
+     Do not try to "fix it later." -->
+
+- <!-- Red flag behavior — what it means
+     e.g. "Writing implementation code before any test file exists — means step 1 was skipped." -->
+- <!-- Red flag behavior — what it means -->
+- <!-- Red flag behavior — what it means -->
+
+---
+
+## Anti-Patterns
+
+<!-- Common ways developers (and AIs) cheat this process.
+     Name them explicitly so they can be recognized and rejected. -->
+
+- **[Anti-pattern name]** — <!-- Description and why it's harmful.
+                               e.g. "Writing tests after implementation" — tests written after code tend to
+                               test the implementation, not the behavior. They pass by construction, not by proof. -->
+
+- **[Anti-pattern name]** — <!-- Description and why it's harmful. -->
+
+- **[Anti-pattern name]** — <!-- Description and why it's harmful. -->
+
+---
+
+## Examples
+
+### Correct Application
+
+```
+<!-- Show a concrete example of this skill applied correctly.
+     e.g. for TDD:
+     1. Developer says: "I need to add a method that calculates discounts."
+     2. AI writes: tests/discount-service.test.js with a failing test.
+     3. AI runs: node --test tests/discount-service.test.js → FAIL (expected).
+     4. AI writes: src/domain/discount/service.js with minimum implementation.
+     5. AI runs: node --test tests/discount-service.test.js → PASS.
+     6. AI commits: test(discount): add discount calculation test + implementation -->
+```
+
+### Incorrect Application (What NOT to Do)
+
+```
+<!-- Show the anti-pattern in action so it's recognizable.
+     e.g. for TDD:
+     1. Developer says: "I need to add a method that calculates discounts."
+     2. AI writes: src/domain/discount/service.js immediately.
+     3. AI then writes: tests/discount-service.test.js to match the implementation.
+     --> This is wrong. The test was written to fit the code, not to define the contract. -->
+```
+
+---
+
+## When to Skip
+
+<!-- Be honest about cases where this skill genuinely does not apply.
+     Listing skip conditions prevents over-application and builds trust.
+     e.g.:
+     - One-line typo fixes in comments or documentation
+     - Configuration-only changes (no logic, no behavior)
+     - Generated files that are not hand-edited
+
+     If in doubt, apply the skill. Skipping should be the exception. -->
+
+- <!-- Legitimate skip case -->
+- <!-- Legitimate skip case -->
