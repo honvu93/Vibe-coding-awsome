@@ -101,7 +101,7 @@ src/domain/tasks/
 **Supporting infrastructure (`src/infrastructure/`):**
 
 - `db/prisma-client.js` — singleton PrismaClient, dev-global cached
-- `security/token-box.js` — AES-256-GCM for API tokens (key: `APP_TOKEN_SECRET`)
+- `security/token-box.js` — AES-256-GCM for API tokens (key: `<YOUR_TOKEN_SECRET>`)
 - `queue/` — BullMQ job queues for async work (notifications, exports)
 - `storage/upload-store.js` — local file staging with SHA-256 checksums
 - `resilience/` — circuit breaker, exponential retry
@@ -202,14 +202,14 @@ admin@example.local   /   dev-password   (role: admin)
 user@example.local    /   dev-password   (role: member)
 ```
 
-Override via env: `APP_ADMIN_EMAIL`, `APP_ADMIN_PASSWORD`, `BETTER_AUTH_SECRET`.
+Override via env: `APP_ADMIN_EMAIL`, `APP_ADMIN_PASSWORD`, `<YOUR_AUTH_SECRET>`.
 
 ## Environment Variables
 
 ```bash
 # Required
 DATABASE_URL=postgresql://taskflow:taskflow@localhost:5432/taskflow
-BETTER_AUTH_SECRET=change-me-in-production-32chars-minimum
+<YOUR_AUTH_SECRET>=change-me-in-production-32chars-minimum
 REDIS_URL=redis://localhost:6379
 
 # Optional with defaults
@@ -219,7 +219,7 @@ WORKER_DRAIN_TIMEOUT_MS=120000
 NEXT_PUBLIC_API_URL=http://localhost:4100
 
 # Features
-APP_TOKEN_SECRET=               # falls back to BETTER_AUTH_SECRET
+<YOUR_TOKEN_SECRET>=             # falls back to <YOUR_AUTH_SECRET>
 SMTP_HOST=localhost
 SMTP_PORT=1025
 SMTP_FROM=noreply@taskflow.local

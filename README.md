@@ -94,7 +94,7 @@ These practices are **framework-agnostic**. Whether you're building in Python, T
 
 ## Origin
 
-These practices were developed while building [AutoVeoup](https://autoveoup.com) — a video generation platform with:
+These practices were developed while building a production video generation platform with:
 - 34 backend domain modules (Node.js, Prisma, PostgreSQL)
 - Next.js 16 frontend with React 19
 - Chrome extension with dual-build system
